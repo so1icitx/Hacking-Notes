@@ -1,6 +1,22 @@
 
 # Nmap Basics
 
+## What is Nmap?
+
+**Nmap (Network Mapper)** is a free, open-source tool for discovering devices on a network and auditing their security. It tells you what’s running, which ports are open, and even guesses operating systems and service versions. Imagine it as a network detective, uncovering clues about what’s out there and how it’s configured.
+
+**Note**: We’ll often run Nmap with `sudo` or as root to unlock its full potential. Without root privileges, you’re limited to basic scans like TCP connect scans—more on that later!
+
+---
+
+## Specifying Targets in Nmap
+
+Nmap needs to know what to scan, and it’s super flexible about how you tell it:
+
+- **IP Range with `-`**: Scan a range of IPs, e.g., `192.168.0.1-10` (scans 192.168.0.1 to 192.168.0.10).
+- **IP Subnet with `/`**: Scan a whole subnet, e.g., `192.168.0.1/24` (scans 192.168.0.0 to 192.168.0.255).
+- **Hostname**: Target a specific hostname, e.g., `google.com`.
+
 ## Discovering Live Hosts with Ping Scan (`-sn`)
 
 ### Scanning a Local Network
