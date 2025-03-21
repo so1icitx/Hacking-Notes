@@ -1,60 +1,66 @@
-# Hashing
 
-## What is a Hash Function?
-A **hash function** is a one-way cryptographic function that takes input data of any size and produces a fixed-size output called a hash. Unlike encryption, hashing cannot be reversed. It ensures data integrity, secures passwords, and is widely used in cybersecurity.
+#  Hashing - Beginner Guide
 
-### Characteristics of a Secure Hash Function:
-- The same input always produces the same output.
--  A tiny change in input drastically changes the hash.
-- Impossible to derive the input from the hash. (nearly)
-- No two inputs should produce the same hash. (should)
-- Efficient to compute but difficult to reverse.
+##  What is Hashing?
+Hashing is a one-way cryptographic function that transforms input data into a fixed-length hash. It is **irreversible** and is used for password storage, integrity verification, and digital signatures.
 
-### Hashing Example:
+### 🔹 Key Properties of Hashing
+-  The same input always produces the same output.
+- A small input change results in a drastically different hash.
+- Hashes should be quick to generate.
+- Two different inputs should not produce the same hash.
+
+---
+
+## 🔹 Common Hashing Algorithms
+
+| Algorithm | Length | Example Hash |
+|-----------|--------|--------------|
+| **MD5** | 32 hex | `5d41402abc4b2a76b9719d911017c592` |
+| **SHA-1** | 40 hex | `2fd4e1c67a2d28fced849ee1bb76e7391b93eb12` |
+| **SHA-256** | 64 hex | `e632b7095b0bf32c260fa4c539e9fd7b852d0de454e9be26f24d0d6f91d069d3` |
+
+---
+
+## 🔹 Hashing Commands & Examples
+
+###  Hash a String
 ```bash
-$ echo -n "password123" | md5sum
-482c811da5d5b4bc6d497ffa98491e38
+echo -n "password" | md5sum
+```
+**Explanation:**
+- `echo -n "password"` → Outputs "password" (without a newline).
+- `|` → Pipes the output to the next command.
+- `md5sum` → Generates the MD5 hash.
+
+**Example Output:**
+```
+5f4dcc3b5aa765d61d8327deb882cf99  -
 ```
 
-## Why Hashing is Important
-1. **Password Storage**: Instead of storing plaintext passwords, systems store hashed versions.
-2. **Data Integrity**: Ensures files have not been altered (checksum verification).
-3. **Cryptographic Signatures**: Used in digital certificates to verify authenticity.
-4. **File Deduplication**: Detects duplicate files based on hash comparison.
-5. **Authentication**: Hashes are used in password authentication without revealing the original password.
-
-## Hash Collisions
-A **collision** happens when two different inputs produce the same hash. This is a major weakness in cryptographic security.
-
-### Example:
-Older algorithms like **MD5** and **SHA-1** are vulnerable to collisions, making them insecure for cryptographic use.
-
-## Common Hash Algorithms
-| Algorithm | Hash Length | Security Status |
-|-----------|------------|-----------------|
-| MD5       | 128-bit    | Broken (collisions found) |
-| SHA-1     | 160-bit    | Weak (collisions found) |
-| SHA-256   | 256-bit    | Secure |
-| SHA-512   | 512-bit    | Secure |
-| bcrypt    | Variable   | Secure (Password Hashing) |
-| Argon2    | Variable   | Highly Secure (Recommended for passwords) |
-
-## Hashing in Cybersecurity
-### 1. **Password Hashing and Salting**
-When passwords are stored, they should be hashed with a **salt** (a unique, random value added to prevent attacks like rainbow tables).
-
-**Example of Salting a Hash:**
+###  Hash a File
 ```bash
-$ echo -n "password123mysalt" | sha256sum
-1a2b3c4d5e6f...
+sha256sum myfile.txt
 ```
+**Explanation:**
+- `sha256sum` → Computes the SHA-256 hash.
+- `myfile.txt` → The target file.
 
-### 2. **Hashing for Integrity Checking**
-When downloading software, hashes are provided to verify integrity.
+---
+
+## 🔹 Hashing Security & Attacks
+
+###  Hash Collisions
+A **collision** occurs when two different inputs produce the same hash. Weak hash functions like **MD5** and **SHA-1** are vulnerable to collisions.
+
+###  Rainbow Table Attacks
+A **rainbow table** is a precomputed list of hash-to-password mappings. **Salting** prevents this attack by adding random data before hashing.
+
+###  Salting Example
 ```bash
-$ sha256sum downloaded_file.iso
+echo -n "password123SALT" | sha256sum
 ```
-Compare the output with the hash provided by the developer.
+Salting ensures that even if two users have the same password, their hashes will be different.
 
 ---
 
