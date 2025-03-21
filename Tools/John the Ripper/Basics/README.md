@@ -1,89 +1,64 @@
-# John the Ripper
 
-John the Ripper (JtR) is a powerful and fast password-cracking tool designed for penetration testing and security auditing. It supports various password hash formats and provides multiple attack methods.
+#  John the Ripper
 
-## Features
-- Supports a wide range of hash formats (MD5, SHA-1, bcrypt, etc.).
-- Uses brute-force, dictionary, and rule-based attacks.
-- Can crack Linux, Windows, and archive file passwords.
+##  What is John the Ripper?
+John the Ripper (JtR) is a **password-cracking** tool that supports multiple hash formats and is used for penetration testing.Uses CPU.
 
-## Basic Usage
+---
 
-### Identifying a Hash Type
+## 🔹 Installing John the Ripper
 ```bash
-john --list=formats | grep -i "md5"
-```
-
-### Cracking a Hash Using a Wordlist
-```bash
-john --wordlist=/usr/share/wordlists/rockyou.txt hashes.txt
-```
-
-### Viewing Cracked Passwords
-```bash
-john --show hashes.txt
+sudo apt install john
 ```
 
 ---
 
-## Cracking Linux Passwords
-Linux passwords are stored in `/etc/shadow`. To crack them, extract them using the `unshadow` command:
+## 🔹 Basic John the Ripper Usage
+
+### Crack a Hash
 ```bash
-unshadow /etc/passwd /etc/shadow > unshadowed.txt
-john unshadowed.txt
+john --format=raw-md5 --wordlist=/usr/share/wordlists/rockyou.txt hashes.txt
+```
+**Explanation:**
+- `--format=raw-md5` → Specifies the hash type (MD5).
+- `--wordlist=/usr/share/wordlists/rockyou.txt` → Uses a predefined wordlist.
+- `hashes.txt` → File containing the hash.
+
+---
+
+## 🔹 Advanced Attacks
+
+### Cracking a ZIP File Password
+```bash
+zip2john secret.zip > ziphash.txt
+john --wordlist=/usr/share/wordlists/rockyou.txt ziphash.txt
+```
+**Explanation:**
+- `zip2john` → Extracts the hash from the ZIP file.
+- `john` → Uses the wordlist to crack the hash.
+
+### Cracking a RAR File Password
+```bash
+rar2john secret.rar > rarhash.txt
+john --wordlist=/usr/share/wordlists/rockyou.txt rarhash.txt
 ```
 
-## Cracking Windows NTLM Hashes
-Extract NTLM hashes from Windows using tools like `mimikatz` and save them in a file:
+### Cracking an SSH Key Password
 ```bash
-john --format=nt hashes.txt
+ssh2john id_rsa > sshhash.txt
+john --wordlist=/usr/share/wordlists/rockyou.txt sshhash.txt
 ```
 
 ---
 
-## Cracking Password-Protected ZIP and RAR Files
-
-### Extracting Hashes from ZIP Files
-Use `zip2john` to extract the hash from a password-protected ZIP file:
+## 🔹 Saving & Resuming Cracking Sessions
+### Save Progress
 ```bash
-zip2john protected.zip > zip_hash.txt
+john --session=mycrack --format=raw-md5 hashes.txt
 ```
-Crack the hash with:
+### Resume Cracking
 ```bash
-john --wordlist=/usr/share/wordlists/rockyou.txt zip_hash.txt
+john --restore=mycrack
 ```
 
-### Extracting Hashes from RAR Files
-Use `rar2john` to extract the hash from a RAR archive:
-```bash
-rar2john protected.rar > rar_hash.txt
-```
-Crack the hash with:
-```bash
-john --wordlist=/usr/share/wordlists/rockyou.txt rar_hash.txt
-```
-
----
-
-## Cracking SSH Private Key Passwords
-
-If you have an encrypted SSH private key (`id_rsa`), extract the hash using `ssh2john`:
-```bash
-python3 /usr/share/john/ssh2john.py id_rsa > id_rsa_hash.txt
-```
-Crack the hash with:
-```bash
-john --wordlist=/usr/share/wordlists/rockyou.txt id_rsa_hash.txt
-```
-
----
-
-## Using Custom Rules for Smarter Attacks
-
-John supports advanced password mutation rules. Example: Append numbers and symbols to dictionary words.
-```bash
-john --wordlist=rockyou.txt --rules wordlist.txt
-```
-
----
 
