@@ -237,7 +237,7 @@ if (isset($_GET['cmd'])) {
 - **p0wny-shell**: Tiny PHP shell for command execution.
 - **b374k**: Feature-packed—file management, commands, more.
 - **c99**: Robust, with file ops and command execution.
-- **More**: Check [r57shell.net](https://www.r57shell.net/).
+- **More**: Check [r57shell.net](https://www.r57shell.net/) or [custom](https://www.revshells.com/)).
 
 ---
 
