@@ -69,6 +69,10 @@ This README compiles a list of useful websites for penetration testing, security
 
 ---
 
+
+## MORE 
+- **[CyberChef](https://gchq.github.io/CyberChef/)**
+
 ## Usage Tips
 - **Bookmark these sites**: Keep them handy in your browser for quick access during CTFs or pentesting engagements.
 - **Legal Disclaimer**: Use these resources ethically and only on systems you have permission to test. Unauthorized access is illegal.
