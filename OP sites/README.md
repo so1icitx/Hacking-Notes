@@ -73,7 +73,8 @@ This README compiles a list of useful websites for penetration testing, security
 ## MORE 
 - **[CyberChef](https://gchq.github.io/CyberChef/)**
 - **[CRT](https://crt.sh/)**
-- --**[dns](https://dnsdumpster.com/}**
+- **[dns](https://dnsdumpster.com/)**
+- **[dns](https://www.shodan.io/)**
 
 ## Usage Tips
 - **Bookmark these sites**: Keep them handy in your browser for quick access during CTFs or pentesting engagements.
