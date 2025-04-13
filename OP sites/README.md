@@ -76,6 +76,7 @@ This README compiles a list of useful websites for penetration testing, security
 - **[dns](https://dnsdumpster.com/)**
 - **[dns](https://www.shodan.io/)**
 - **[mal](https://malapi.io/)**
+- **[mal](https://vx-underground.org/Samples/ATM%20Malware)
 
 ## Usage Tips
 - **Bookmark these sites**: Keep them handy in your browser for quick access during CTFs or pentesting engagements.
