@@ -77,6 +77,7 @@ This README compiles a list of useful websites for penetration testing, security
 - **[dns](https://www.shodan.io/)**
 - **[mal](https://malapi.io/)**
 - **[mal](https://vx-underground.org/Samples/ATM%20Malware)
+- https://github.com/swisskyrepo/PayloadsAllTheThings/blob/master/Methodology%20and%20Resources/Reverse%20Shell%20Cheatsheet.md
 
 ## Usage Tips
 - **Bookmark these sites**: Keep them handy in your browser for quick access during CTFs or pentesting engagements.
