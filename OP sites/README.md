@@ -78,6 +78,12 @@ This README compiles a list of useful websites for penetration testing, security
 - **[mal](https://malapi.io/)**
 - **[mal](https://vx-underground.org/Samples/ATM%20Malware)
 - https://github.com/swisskyrepo/PayloadsAllTheThings/blob/master/Methodology%20and%20Resources/Reverse%20Shell%20Cheatsheet.md
+- https://github.com/peass-ng/PEASS-ng/tree/master/linPEAS
+- https://github.com/rebootuser/LinEnum
+- https://github.com/The-Z-Labs/linux-exploit-suggester
+- https://github.com/diego-treitos/linux-smart-enumeration
+- https://github.com/linted/linuxprivchecker
+- https://www.cvedetails.com/cve/CVE-2025-43715/
 
 ## Usage Tips
 - **Bookmark these sites**: Keep them handy in your browser for quick access during CTFs or pentesting engagements.
