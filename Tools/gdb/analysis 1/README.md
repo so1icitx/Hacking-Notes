@@ -34,10 +34,9 @@ This project highlights my journey into binary exploitation, from debugging to c
 - **Skills**: Basic C, Linux terminal, and `gdb` commands (e.g., `break`, `run`, `print`).
 
 ## Setup and Compilation
-1. **Clone the Repository**:
+1. **Get the script!**:
    ```bash
-   git clone https://github.com/so1icitx/license-key-exploit.git
-   cd license-key-exploit
+   wget https://raw.githubusercontent.com/so1icitx/Hacking-Notes/main/Tools/gdb/analysis%201/vulnerable_license.c
    ```
 2. **Compile the Program**:
    ```bash
@@ -48,7 +47,7 @@ This project highlights my journey into binary exploitation, from debugging to c
 3. **Test the Program**:
    - Correct key:
      ```bash
-     ./license AAAA-KEY12345
+     ./license AAAA-KEY1234@
      ```
      Output: `Access granted! Welcome to the system.`
    - Incorrect key:
