@@ -222,4 +222,3 @@ To apply these concepts, explore tools like VirusTotal, Wireshark, and MITRE ATT
 
 ---
 
-If you need additional artifacts (e.g., code samples, a portfolio page, or a `CONTRIBUTING.md`), or if you want to refine any README further, let me know!
