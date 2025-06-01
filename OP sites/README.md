@@ -83,7 +83,8 @@ This README compiles a list of useful websites for penetration testing, security
 - https://github.com/The-Z-Labs/linux-exploit-suggester
 - https://github.com/diego-treitos/linux-smart-enumeration
 - https://github.com/linted/linuxprivchecker
-- https://www.cvedetails.com/cve/CVE-2025-43715/
+- https://www.cvedetails.com/
+- https://www.malware-traffic-analysis.net/
 
 ## Usage Tips
 - **Bookmark these sites**: Keep them handy in your browser for quick access during CTFs or pentesting engagements.
