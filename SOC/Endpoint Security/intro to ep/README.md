@@ -7,7 +7,7 @@
 
 Understanding core Windows processes is essential for distinguishing normal behavior from potential threats. The **Task Manager**, a built-in Windows GUI tool, displays running processes, resource usage (CPU, memory), and allows termination of unresponsive programs. Below is a list of core Windows processes and their typical parent-child relationships, considered normal behavior:
 
-- **System**: Parent to System Idle Process (PID 0).
+- **System**: Parent to System Idle Process (PID 0)
 - **System > smss.exe**: Session Manager Subsystem, initializes user sessions.
 - **csrss.exe**: Client/Server Runtime Subsystem, handles GUI and console windows.
 - **wininit.exe**: Initializes system components.
