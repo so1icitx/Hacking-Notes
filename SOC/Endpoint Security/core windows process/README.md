@@ -306,6 +306,5 @@ The **explorer.exe** (Windows Explorer) provides the desktop, Start Menu, Taskba
 - SANS Hunt Evil Poster, https://www.sans.org/posters/hunt-evil/
 - Core Processes in Windows, https://0xcybery.github.io/blog/Core-Processes-In-Windows-System
 - Microsoft Windows Documentation, https://learn.microsoft.com/en-us/windows/win32/
-- TryHackMe Intro to Endpoint Security, https://tryhackme.com/room/introtoendpointsecurity
-
+- TryHackMe Intro to Endpoint Security, https://tryhackme.com/room/btwindowsinternals
 ---
