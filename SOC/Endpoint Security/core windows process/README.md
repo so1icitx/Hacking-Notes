@@ -167,10 +167,10 @@ The **services.exe** (Service Control Manager) manages system services:
 It’s the parent to processes like `svchost.exe`, `spoolsv.exe`, and `msmpeng.exe`.
 
 **Screenshots**:
-![Services Registry](./screenshots/11.png)
+
 ![LastKnownGood Registry](./screenshots/12.png)
 ![Services Process Tree](./screenshots/13.png)
-
+![Wininit Process Tree](./screenshots/14.png)
 ### Normal Behavior
 
 - **Image Path**: `%SystemRoot%\System32\services.exe`.
@@ -196,8 +196,8 @@ The **svchost.exe** (Service Host) hosts Windows services as DLLs, reducing reso
 Since Windows 10 (1703), services may run in separate processes on systems with >3.5 GB RAM. Attackers often target `svchost.exe` by mimicking its name or installing malicious DLLs.
 
 **Screenshot**:
-![Svchost Process Tree](./screenshots/14.png)
-
+![Svchost Process Tree](./screenshots/15.png)
+![Wininit Process Tree](./screenshots/16.png)
 ### Normal Behavior
 
 - **Image Path**: `%SystemRoot%\System32\svchost.exe`.
