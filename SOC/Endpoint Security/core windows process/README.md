@@ -227,7 +227,7 @@ The **lsass.exe** (Local Security Authority Subsystem Service) enforces security
 It uses authentication packages in `HKLM\System\CurrentControlSet\Control\Lsa`. Attackers target it with tools like Mimikatz to dump credentials or mimic its name.
 
 **Screenshot**:
-![LSA Registry](./screenshots/15.png)
+![LSA Registry](./screenshots/17.png)
 
 ### Normal Behavior
 
@@ -252,8 +252,8 @@ It uses authentication packages in `HKLM\System\CurrentControlSet\Control\Lsa`. 
 The **winlogon.exe** (Windows Logon) handles the Secure Attention Sequence (Ctrl+Alt+Delete), user profile loading (`NTUSER.DAT` into `HKCU`), and screensaver/lock screen functions. It’s launched by `smss.exe` in Session 1 with `csrss.exe`.
 
 **Screenshots**:
-![Winlogon Registry](./screenshots/16.png)
-![Winlogon Child Processes](./screenshots/17.png)
+![Winlogon Registry](./screenshots/18.png)
+
 
 ### Normal Behavior
 
@@ -277,7 +277,8 @@ The **winlogon.exe** (Windows Logon) handles the Secure Attention Sequence (Ctrl
 The **explorer.exe** (Windows Explorer) provides the desktop, Start Menu, Taskbar, and file explorer. Launched by `userinit.exe` (via `HKLM\Software\Microsoft\Windows NT\CurrentVersion\Winlogon\Shell`), `userinit.exe` exits after spawning it.
 
 **Screenshot**:
-![Explorer Child Processes](./screenshots/18.png)
+![Explorer Child Processes](./screenshots/19.png)
+![Wininit Process Tree](./screenshots/20.png)
 
 ### Normal Behavior
 
