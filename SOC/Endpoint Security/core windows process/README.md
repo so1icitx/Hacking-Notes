@@ -135,6 +135,8 @@ It’s essential for system service initialization.
 
 **Screenshot**:
 ![Wininit Process Tree](./screenshots/10.png)
+![Wininit Process Tree](./screenshots/11.png)
+
 
 ### Normal Behavior
 
