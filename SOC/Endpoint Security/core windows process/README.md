@@ -253,6 +253,7 @@ The **winlogon.exe** (Windows Logon) handles the Secure Attention Sequence (Ctrl
 
 **Screenshots**:
 ![Winlogon Registry](./screenshots/18.png)
+![Explorer Child Processes](./screenshots/19.png)
 
 
 ### Normal Behavior
@@ -277,7 +278,7 @@ The **winlogon.exe** (Windows Logon) handles the Secure Attention Sequence (Ctrl
 The **explorer.exe** (Windows Explorer) provides the desktop, Start Menu, Taskbar, and file explorer. Launched by `userinit.exe` (via `HKLM\Software\Microsoft\Windows NT\CurrentVersion\Winlogon\Shell`), `userinit.exe` exits after spawning it.
 
 **Screenshot**:
-![Explorer Child Processes](./screenshots/19.png)
+
 ![Wininit Process Tree](./screenshots/20.png)
 
 ### Normal Behavior
