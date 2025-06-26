@@ -3,7 +3,7 @@
 ## Overview
 Wazuh is a free, open-source Endpoint Detection and Response (EDR) solution launched in 2015 as a fork of OSSEC. It provides robust security monitoring for endpoints across various environments, including on-premises, cloud, virtualized, and containerized systems. Designed for scalability, Wazuh is suitable for small businesses to large enterprises. It operates on a **manager-agent model**, where a central **Wazuh manager** collects, analyzes, and visualizes data from **agents** installed on monitored devices. Agents track system events (e.g., authentication, file changes) and send logs to the manager for processing, enabling threat detection and incident response.
 
-![Wazuh Manager-Agent Architecture](1.png)
+![Wazuh Manager-Agent Architecture](./screenshots/1.png)
 
 ### Key EDR Features
 Wazuh offers a comprehensive set of features to detect and respond to security threats:
@@ -20,7 +20,7 @@ To monitor endpoints, Wazuh agents must be installed on devices to collect logs 
 1. **Access the Deployment Wizard**:
    - Navigate to `Wazuh -> Agents -> Deploy New Agent` in the Wazuh dashboard to launch an intuitive wizard.
 
-   ![Wazuh Agent Deployment Wizard](2.png)
+   ![Wazuh Agent Deployment Wizard](./screenshots/2.png)
 
 2. **Specify Prerequisites**:
    - **Operating System**: Select the target OS (e.g., Windows, Debian/Ubuntu, CentOS).
@@ -34,7 +34,7 @@ To monitor endpoints, Wazuh agents must be installed on devices to collect logs 
      Invoke-WebRequest -Uri https://packages.wazuh.com/4.x/windows/wazuh-agent-4.x.x-x.msi -OutFile wazuh-agent.msi; msiexec.exe /i wazuh-agent.msi /q WAZUH_MANAGER='10.10.12.255' WAZUH_AGENT_GROUP='default'
      ```
 
-     ![Installing Wazuh Agent on Windows](3.png)
+     ![Installing Wazuh Agent on Windows](./screenshots/3.png)
 
    - **Debian/Ubuntu**:
      ```bash
@@ -42,7 +42,7 @@ To monitor endpoints, Wazuh agents must be installed on devices to collect logs 
      sudo WAZUH_MANAGER='10.10.12.255' dpkg -i wazuh-agent_4.x.x-x_amd64.deb
      ```
 
-     ![Installing Wazuh Agent on Debian/Ubuntu](4.png)
+     ![Installing Wazuh Agent on Debian/Ubuntu](./screenshots/4.png)
 
 4. **Restart the Agent**:
    - Ensure the agent starts and connects to the manager:
@@ -148,17 +148,17 @@ Install Sysmon with the configuration:
 Sysmon64.exe -accepteula -i detect_powershell.xml
 ```
 
-![Sysmon Configuration Installation](5.png)
-![Sysmon Configuration Applied](6.png)
+![Sysmon Configuration Installation](./screenshots/5.png)
+![Sysmon Configuration Applied](./screenshots/6.png)
 
 Verify Sysmon events in Event Viewer under `Microsoft-Windows-Sysmon/Operational`:
 
-![Sysmon Event Viewer Search](7.png)
-![Sysmon Event Log](8.png)
+![Sysmon Event Viewer Search](./screenshots/7.png)
+![Sysmon Event Log](./screenshots/8.png)
 
 Launch a PowerShell prompt and check Event Viewer for the event:
 
-![PowerShell Event in Event Viewer](9.png)
+![PowerShell Event in Event Viewer](./screenshots/9.png)
 
 ### Wazuh Agent Configuration
 Edit `C:\Program Files (x86)\ossec-agent\ossec.conf` on the Windows agent:
@@ -254,7 +254,7 @@ Restart the agent:
 sudo systemctl restart wazuh-agent
 ```
 
-![Auditd Log Configuration](10.png)
+![Auditd Log Configuration](./screenshots/10.png)
 
 ## Wazuh API
 The Wazuh API (port 55000/TCP, TLS-encrypted) enables command-line interaction with the manager for tasks like checking server status or managing agents.
@@ -354,7 +354,7 @@ Output:
 ### API Console
 Access the Wazuh API console via the dashboard under `Tools` to run queries (e.g., `/manager/info`) using GET/POST/PUT/DELETE methods.
 
-![Wazuh API Console](11.png)
+![Wazuh API Console](./screenshots/11.png)
 
 ## Additional Tips for MSSP Analysts
 - **Compliance**: Wazuh supports PCI DSS, HIPAA, GDPR, and NIST with built-in rulesets and compliance reports.
