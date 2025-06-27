@@ -63,6 +63,7 @@ cmd.exe /c "reg add HKCU\SOFTWARE\ATOMIC-T1053.005 /v test /t REG_SZ /d cGluZyB3
 **Log Reference**: See above command.
 
 **Answer**: The scheduled task runs at **12:34**.
+![time](./screenshots/5.png)
 
 **MITRE ATT&CK**: T1053.005 (Scheduled Task)
 
@@ -94,6 +95,7 @@ cmd.exe /c "reg add HKCU\SOFTWARE\ATOMIC-T1053.005 /v test /t REG_SZ /d cGluZyB3
 ```
 ![User Account Creation](./screenshots/8.png)
 ![Guest Account Password](./screenshots/9.png)
+![pass](./screenshots/10.png)
 
 **Answer**: The password for the new user account is `I_AM_M0NIT0R1NG`.
 
