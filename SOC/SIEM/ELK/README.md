@@ -14,7 +14,7 @@ CyberT, a US-based company, is monitoring employee VPN logs for January 2022 to 
 
 The Elastic Stack is a collection of open-source tools to ingest, process, store, search, and visualize data in real-time from any source and format.
 
-![Elastic Stack Components](1.png)
+![Elastic Stack Components](./screenshots/1.png)
 
 ### Elasticsearch
 Elasticsearch is a full-text search and analytics engine that stores JSON-formatted documents. It is used to store, analyze, and correlate VPN logs in the `vpn_connections` index, supporting RESTful API interactions.
@@ -40,13 +40,13 @@ Beats are host-based agents (data shippers) that collect specific data and send 
 - **Winlogbeat**: Collects Windows event logs (e.g., VPN authentication).
 - **Packetbeat**: Captures network traffic flows.
 
-![Beats Overview](2.png)
+![Beats Overview](./screenshots/2.png)
 
 ### Kibana
 Kibana is a web-based interface for visualizing and analyzing Elasticsearch data. It supports real-time log searching and visualization via dashboards and KQL.
 
 **KQL Toggle**: KQL can be enabled/disabled in Kibana’s settings.
-![KQL Toggle](3.png)
+![KQL Toggle](./screenshots/3.png)
 
 ### How Components Work Together
 - **Beats**: Collect data from endpoints (e.g., VPN logs).
@@ -68,14 +68,14 @@ Searches for terms in any field, matching whole words.
   United States
   ```
   - Returns 2304 hits for logs containing "United States" in any field (e.g., `Source_Country`).
-  - ![United States Search](5.png)
+  - ![United States Search](./screenshots/5.png)
 
 - **Search: "United"**:
   ```kql
   United
   ```
   - Returns no results, as KQL matches whole terms, not partial words.
-  - ![United Search](6.png)
+  - ![United Search](./screenshots/6.png)
 
 #### Wildcard Search
 Uses `*` to match parts of a term.
@@ -85,7 +85,7 @@ Uses `*` to match parts of a term.
   United*
   ```
   - Returns logs containing terms starting with "United" (e.g., United States, United Nations).
-  - ![Wildcard Search](7.png)
+  - ![Wildcard Search](./screenshots/7.png)
 
 #### Logical Operators
 - **OR Operator**:
@@ -93,21 +93,21 @@ Uses `*` to match parts of a term.
   "United States" OR "England"
   ```
   - Returns logs containing either "United States" or "England".
-  - ![OR Operator Search](8.png)
+  - ![OR Operator Search](./screenshots/8.png)
 
 - **AND Operator**:
   ```kql
   "United States" AND "Virginia"
   ```
   - Returns logs containing both "United States" and "Virginia".
-  - ![AND Operator Search](9.png)
+  - ![AND Operator Search](./screenshots/9.png)
 
 - **NOT Operator**:
   ```kql
   "United States" AND NOT "Florida"
   ```
   - Returns logs from "United States" excluding those with "Florida".
-  - ![NOT Operator Search](10.png)
+  - ![NOT Operator Search](./screenshots/10.png)
 
 ### Field-Based Search
 Uses `FIELD:VALUE` syntax to target specific fields.
@@ -117,7 +117,7 @@ Uses `FIELD:VALUE` syntax to target specific fields.
   Source_ip:238.163.231.224 AND UserName:Suleman
   ```
   - Returns logs where `Source_ip` is `238.163.231.224` and `UserName` is `Suleman`.
-  - ![Field-Based Search](11.png)
+  - ![Field-Based Search](./screenshots/11.png)
 
 ### Investigation Queries
 
@@ -129,37 +129,32 @@ Source_Country:"United States" AND (UserName:"James" OR UserName:"Albert")
 ```
 
 - **Result**: 161 records returned.
-- ![James or Albert Logs](12.png)
+- ![James or Albert Logs](./screenshots/12.png)
 
 #### 2. VPN Connections by Terminated User Johny Brown
 **Query**: Find VPN connections for Johny Brown after his termination on January 1, 2022.
 
 ```kql
-UserName:"Johny Brown" AND @timestamp > "2022-01-01T00:00:00.000Z"
+UserName:"Johny Brown" 
 ```
 
 - **Result**: 1 VPN connection observed.
-- ![Johny Brown Connection](13.png)
+- ![Johny Brown Connection](./screenshots/13.png)
 
-#### 3. User with the Greatest Number of Failed Attempts
-**Query**: Aggregate failed attempts by `UserName` where `action:failed`.
-
-```kql
-action:failed
-```
-
-- **Result**: User `simon` had the most failed attempts.
-- ![Failed Attempts by User](14.png)
-
-#### 4. Total Wrong VPN Connection Attempts in January
-**Query**: Count failed VPN attempts for January 2022.
+#### 3/4. User with the Greatest Number of Failed Attempts
+**Query**: Aggregate failed attempts by `UserName` where `action:failed` and Count failed VPN attempts for January 2022.
 
 ```kql
 action:failed
 ```
 
+- **Result**: User `simon` had the most failed attempts
 - **Result**: 274 failed attempts observed.
-- ![Failed Connection Attempts](14.png)
+
+- ![Failed Attempts by User](./screenshots/14.png)
+
+
+
 
 ## Documentation
 - Elastic Stack: [www.elastic.co/guide](https://www.elastic.co/guide)
