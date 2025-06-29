@@ -5,6 +5,8 @@ this is just a place where ill post things ive learnt, throughout my cybersecuri
 
 
 ### Credits 
+* letsdefend.io
+* cyberdefenders.org
 * tryhackme.com
 * comptia security+
 
