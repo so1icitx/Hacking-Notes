@@ -73,31 +73,19 @@ During SOC monitoring, Analyst John detected an IDS alert indicating potential C
 
 **Answer**: The full URL is `pastebin.com/yTg0Ah6a`.
 
-### 6. Name of the File Accessed
+### 6/7. Name of the File Accessed
 **Question**: A file was accessed on the filesharing site. What is the name of the file accessed?
-
-**Search**: Visited the URL `pastebin.com/yTg0Ah6a` identified in the logs to inspect the content.
-
-**Finding**: The file accessed on Pastebin is named `secret.txt`.
-
-**Log**:
-- Screenshot of the Pastebin page showing `secret.txt`.
-![Pastebin File](./screenshots/6.png)
-
-**Answer**: The file name is `secret.txt`.
-
-### 7. Secret Code in the File
 **Question**: The file contains a secret code with the format `THM{_____}`. What is the secret code?
 
-**Search**: Analyzed the content of `secret.txt` on `pastebin.com/yTg0Ah6a`.
 
+**Finding**: The file accessed on Pastebin is named `secret.txt`.
 **Finding**: The file contains the code `THM{SECRET__CODE}`.
 
-**Log**:
-- Screenshot of the Pastebin content showing the code.
-![Secret Code](6.png)
 
-**Answer**: The secret code is `THM{SECRET__CODE}`.
+![Pastebin File](./screenshots/6.png)
+
+
+**Answer**: The file name is `secret.txt`, The secret code is `THM{SECRET__CODE}`
 
 
 ## Documentation
