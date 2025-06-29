@@ -1,25 +1,41 @@
 
 # OP Sites
 
-This README compiles a list of useful websites for penetration testing, security research, and CTF challenges. These resources provide tools, exploits, documentation, and utilities to aid in various stages of hacking and learning.
+This README compiles a list of useful websites and resources for penetration testing, security research, and CTF challenges. These tools, exploits, documentation, and utilities aid in various stages of ethical hacking and learning.
 
 ---
 
 ## Reverse Shells
 - **[RevShells](https://www.revshells.com/)**  
   A web-based tool for generating reverse shell payloads in various languages (e.g., Bash, Python, PHP). Useful for establishing remote access during pentesting.
+- **[PayloadsAllTheThings - Reverse Shell Cheatsheet](https://github.com/swisskyrepo/PayloadsAllTheThings/blob/master/Methodology%20and%20Resources/Reverse%20Shell%20Cheatsheet.md)**  
+  A comprehensive cheatsheet for reverse shell techniques, covering multiple languages and scenarios.
 
 ---
 
 ## Privilege Escalation
 - **[GTFOBins](https://gtfobins.github.io/)**  
-  A curated list of Unix binaries that can be exploited to bypass local security restrictions and escalate privileges. Essential for post-exploitation phases.
+  A curated list of Unix binaries that can be exploited to bypass local security restrictions and escalate privileges. Essential for post-exploitation.
+- **[LinPEAS](https://github.com/peass-ng/PEASS-ng/tree/master/linPEAS)**  
+  A script for Linux privilege escalation enumeration, identifying potential vulnerabilities and misconfigurations.
+- **[LinEnum](https://github.com/rebootuser/LinEnum)**  
+  A Linux enumeration script for finding privilege escalation vectors, including system info, file permissions, and more.
+- **[Linux Exploit Suggester](https://github.com/The-Z-Labs/linux-exploit-suggester)**  
+  A tool that suggests possible exploits based on Linux system details, useful for privilege escalation.
+- **[Linux Smart Enumeration](https://github.com/diego-treitos/linux-smart-enumeration)**  
+  A lightweight script for enumerating Linux systems to identify privilege escalation opportunities.
+- **[Linux Priv Checker](https://github.com/linted/linuxprivchecker)**  
+  A Python script to enumerate Linux system configurations for privilege escalation vectors.
 
 ---
 
 ## Enumeration Tools
 - **[Enum4linux (Kali Docs)](https://www.kali.org/tools/enum4linux/)**  
   Official Kali Linux documentation for `enum4linux`, a tool for enumerating information from Windows and Samba systems (e.g., users, shares).
+- **[DNS Dumpster](https://dnsdumpster.com/)**  
+  A free domain research tool for DNS reconnaissance, mapping subdomains and network infrastructure.
+- **[Shodan](https://www.shodan.io/)**  
+  A search engine for internet-connected devices, useful for network enumeration and identifying exposed services.
 
 ---
 
@@ -44,22 +60,26 @@ This README compiles a list of useful websites for penetration testing, security
 ## Exploit Database
 - **[Exploit-DB](https://www.exploit-db.com/)**  
   A comprehensive archive of exploits and vulnerable software, maintained by Offensive Security. Great for finding PoCs and CVEs.
+- **[CVE Details](https://www.cvedetails.com/)**  
+  A database of CVEs with detailed vulnerability information, including severity, impact, and affected software.
 
 ---
 
 ## Encoding/Decoding Utilities
 - **[Base64 Encoder/Decoder](https://appdevtools.com/base64-encoder-decoder)**  
   A simple online tool for encoding and decoding Base64 strings, useful for analyzing encoded data during CTFs or pentests.
+- **[CyberChef](https://gchq.github.io/CyberChef/)**  
+  A versatile web-based tool for encoding, decoding, and analyzing data, supporting operations like Base64, hex, and encryption.
 
 ---
 
 ## Hashing and Cracking
 - **[SRI Hash Generator](https://www.srihash.org/)**  
-  Generates Subresource Integrity (SRI) hashes for securing web resources, though also useful for general hash generation (e.g., SHA256).
+  Generates Subresource Integrity (SRI) hashes for securing web resources, also useful for general hash generation (e.g., SHA256).
 - **[CrackStation](https://crackstation.net/)**  
   A free online hash cracker supporting MD5, SHA1, and more. Ideal for cracking simple hashes found during engagements.
 - **[Hashes.com](https://hashes.com/en/decrypt/hash)**  
-  Another hash identification and cracking service, supporting a wide range of hash types with a large database.
+  A hash identification and cracking service, supporting a wide range of hash types with a large database.
 
 ---
 
@@ -69,32 +89,35 @@ This README compiles a list of useful websites for penetration testing, security
 
 ---
 
+## Malware Analysis
+- **[MalAPI](https://malapi.io/)**  
+  A resource detailing Windows API calls commonly used by malware, useful for reverse engineering and malware analysis.
+- **[VX-Underground - ATM Malware](https://vx-underground.org/Samples/ATM%20Malware)**  
+  A collection of ATM malware samples for educational purposes, hosted by VX-Underground.
+- **[Malware Traffic Analysis](https://www.malware-traffic-analysis.net/)**  
+  A site offering network traffic captures (PCAPs) and analysis of malware activity, ideal for learning network-based malware behavior.
 
-## MORE 
-- **[CyberChef](https://gchq.github.io/CyberChef/)**
-- **[CRT](https://crt.sh/)**
-- **[dns](https://dnsdumpster.com/)**
-- **[dns](https://www.shodan.io/)**
-- **[mal](https://malapi.io/)**
-- **[mal](https://vx-underground.org/Samples/ATM%20Malware)
-- https://github.com/swisskyrepo/PayloadsAllTheThings/blob/master/Methodology%20and%20Resources/Reverse%20Shell%20Cheatsheet.md
-- https://github.com/peass-ng/PEASS-ng/tree/master/linPEAS
-- https://github.com/rebootuser/LinEnum
-- https://github.com/The-Z-Labs/linux-exploit-suggester
-- https://github.com/diego-treitos/linux-smart-enumeration
-- https://github.com/linted/linuxprivchecker
-- https://www.cvedetails.com/
-- https://www.malware-traffic-analysis.net/
+---
+
+## Certificate Transparency
+- **[CRT.sh](https://crt.sh/)**  
+  A certificate transparency log search tool, useful for discovering subdomains and certificates issued for a domain.
+
+---
 
 ## Usage Tips
 - **Bookmark these sites**: Keep them handy in your browser for quick access during CTFs or pentesting engagements.
-- **Legal Disclaimer**: Use these resources ethically and only on systems you have permission to test. Unauthorized access is illegal.
 - **Combine Tools**: Pair sites like GTFOBins with Exploit-DB for effective privilege escalation, or use RevShells with hash crackers for comprehensive attacks.
+- **Stay Ethical**: Always use these resources responsibly and only on systems you have explicit permission to test. Unauthorized access is illegal.
 
 ---
 
 ## Contributions
-Feel free to suggest additional sites or resources by contacting me or forking this list! This collection will evolve as new tools and sites emerge.
+Feel free to suggest additional sites or resources by contacting me or forking this repository! This collection will evolve as new tools and sites emerge.
 
 ---
-### p.s ill be adding to this README.md periodically :)
+
+### P.S.
+I’ll be adding to this README periodically as I discover new resources. :)
+
+---
