@@ -17,7 +17,7 @@ During SOC monitoring, Analyst John detected an IDS alert indicating potential C
 
 **Log**:
 - Kibana screenshot showing 1482 hits for March 2022.
-![March 2022 Events](1.png)
+![March 2022 Events](./screenshots/1.png)
 
 **Answer**: 1482 events were returned.
 
@@ -30,7 +30,7 @@ During SOC monitoring, Analyst John detected an IDS alert indicating potential C
 
 **Log**:
 - Kibana screenshot showing IP distribution.
-![Source IP Distribution](2.png)
+![Source IP Distribution](./screenshots/2.png)
 
 **Answer**: The IP is `192.166.65.54`.
 
@@ -43,7 +43,7 @@ During SOC monitoring, Analyst John detected an IDS alert indicating potential C
 
 **Log**:
 - Kibana screenshot showing user agent distribution.
-![User Agent Distribution](3.png)
+![User Agent Distribution](./screenshots/3.png)
 
 **Answer**: The binary is `bitsadmin.exe`.
 
@@ -56,7 +56,7 @@ During SOC monitoring, Analyst John detected an IDS alert indicating potential C
 
 **Log**:
 - Kibana screenshot showing `pastebin.com` in the destination field.
-![Pastebin Connection](4.png)
+![Pastebin Connection](./screenshots/4.png)
 
 **Answer**: The filesharing site is `pastebin.com`.
 
@@ -69,7 +69,7 @@ During SOC monitoring, Analyst John detected an IDS alert indicating potential C
 
 **Log**:
 - Kibana screenshot showing the URL in the logs.
-![C2 URL](5.png)
+![C2 URL](./screenshots/5.png)
 
 **Answer**: The full URL is `pastebin.com/yTg0Ah6a`.
 
@@ -82,7 +82,7 @@ During SOC monitoring, Analyst John detected an IDS alert indicating potential C
 
 **Log**:
 - Screenshot of the Pastebin page showing `secret.txt`.
-![Pastebin File](6.png)
+![Pastebin File](./screenshots/6.png)
 
 **Answer**: The file name is `secret.txt`.
 
