@@ -1,6 +1,5 @@
-# Incident Handling Life Cycle: Investigating a Website Defacement at Wayne Enterprises
+# Incident Handling Splunk
 
-This guide outlines the incident handling process and details an investigation into a cyber attack on Wayne Enterprises, where attackers defaced the website `http://www.imreallynotbatman.com` with the message "YOUR SITE HAS BEEN DEFACED." The investigation uses Splunk as the SIEM solution to analyze logs from various sources (e.g., web server, firewall, Suricata, Sysmon) and maps the attacker’s activities to the Lockheed Martin Cyber Kill Chain phases. The analysis leverages Splunk Search Processing Language (SPL) queries and open-source intelligence (OSINT) to answer specific questions about the attack.
 
 ## Incident Handling Life Cycle
 
@@ -140,8 +139,7 @@ The attacker exploits vulnerabilities to gain access to the system.
 
 ![Brute Force IP](screenshots/8.png)
 
-**Answer**: `23.22.63.114`[](https://medium.com/%40huglertomgaw/cyberdefenders-boss-of-the-soc-v1-d38f78cef3ba)[](https://andickinson.github.io/blog/splunk-boss-of-the-soc-v1/)[](https://medium.com/%40bharat997551/boss-of-the-soc-v1-threat-hunting-with-splunk-3596049e94e3)
-
+**Answer**: `23.22.63.114`
 #### 6. IP Used for Successful Admin Login
 **Question**: After finding the correct password, which IP did the attacker use to log in to the admin panel?
 
@@ -244,7 +242,7 @@ The attacker creates malware, establishes domains, or sets up C2 infrastructure.
 ![OSINT Analysis](screenshots/22.png)
 ![OSINT Analysis](screenshots/23.png)
 
-**Answer**: `23.22.63.114`[](https://medium.com/%40huglertomgaw/cyberdefenders-boss-of-the-soc-v1-d38f78cef3ba)[](https://andickinson.github.io/blog/splunk-boss-of-the-soc-v1/)[](https://medium.com/%40bharat997551/boss-of-the-soc-v1-threat-hunting-with-splunk-3596049e94e3)
+**Answer**: `23.22.63.114`
 
 #### 2. Email Address Associated with P01s0n1vy
 **Question**: What is the email address most likely associated with the P01s0n1vy APT group?
@@ -257,26 +255,4 @@ The attacker creates malware, establishes domains, or sets up C2 infrastructure.
 ![OSINT Email](screenshots/22.png)
 ![OSINT Email](screenshots/23.png)
 
-**Answer**: `lillian.rose@po1s0n1vy.com`[](https://medium.com/%40huglertomgaw/cyberdefenders-boss-of-the-soc-v1-d38f78cef3ba)[](https://medium.com/%40bharat997551/boss-of-the-soc-v1-threat-hunting-with-splunk-3596049e94e3)[](https://manj.pk/posts/cyberdefenders-boss-of-soc-v1-walkthrough-part-1/)
-
-## Splunk Configuration
-- **Index**: `botsv1` contains logs from web server, firewall, Suricata, and Sysmon.
-- **Search**: Used SPL queries in the Search & Reporting App to filter logs by `sourcetype`, `src_ip`, `dest_ip`, `uri`, and `form_data`.
-- **OSINT**: Leveraged VirusTotal, ThreatCrowd, and Whoxy.com for external intelligence on IPs, domains, and email addresses.
-
-## Cyber Kill Chain Mapping
-- **Reconnaissance**: Used Acunetix to scan `imreallynotbatman.com` (Joomla CMS, IP `192.168.250.70`), targeting `CVE-2014-6271`.
-- **Weaponization**: Created malware (`3791.exe`, aka `ab.exe`) and set up C2 via `prankglassinebracket.jumpingcrab.com` (`23.22.63.114`).
-- **Delivery**: Attempted SQL injection (`HTTP.URI.SQL.Injection`) and brute force on `/joomla/administrator/index.php`.
-- **Exploitation**: Successfully brute-forced the `admin` account with password `batman` from `23.22.63.114`, logging in from `40.80.148.42`.
-- **Installation**: Installed `3791.exe` (MD5: `AAE3F5A29935E6ABCC2C2754D12A9AF0`) executed by `NT AUTHORITY\IUSR`.
-- **Command & Control**: Communicated with `prankglassinebracket.jumpingcrab.com` to download `poisonivy-is-coming-for-you-batman.jpeg`.
-- **Actions on Objectives**: Defaced the website with `poisonivy-is-coming-for-you-batman.jpeg`.
-
-## Recommendations
-- **Patch Vulnerabilities**: Apply patches for `CVE-2014-6271` on Joomla servers.
-- **Block Malicious IPs**: Add `23.22.63.114` and `40.80.148.42` to firewall blocklists.
-- **Monitor Domains**: Watch for connections to `prankglassinebracket.jumpingcrab.com` and `waynecorinc.com`.
-- **Secure Admin Accounts**: Enforce strong passwords and MFA for Joomla admin accounts.
-- **Remove Malware**: Delete `3791.exe` (`ab.exe`) and scan for persistence mechanisms.
-- **Enh
+**Answer**: `lillian.rose@po1s0n1vy.com`
