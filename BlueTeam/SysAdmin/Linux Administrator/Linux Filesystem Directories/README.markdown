@@ -74,7 +74,7 @@ To explore the filesystem:
    df -T /
    ```
    Displays the filesystem format (e.g., ext4, Btrfs) of the root partition.
-   ![filesys](![cpu](./screenshots/2.png))
+   ![filesys](./screenshots/2.png)
 
 3. **Explore a Directory** (e.g., `/bin`):
    ```bash
