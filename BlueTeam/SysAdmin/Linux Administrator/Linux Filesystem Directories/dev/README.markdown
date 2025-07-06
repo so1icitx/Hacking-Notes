@@ -74,4 +74,4 @@ lsblk
 - [Udev Documentation](https://www.freedesktop.org/wiki/Software/systemd/udev/)
 - [Arch Linux Wiki: Device Files](https://wiki.archlinux.org/title/Device_file)
 
-`/dev` is your gateway to hardware—explore cautiously! 🛠️
+
