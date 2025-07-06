@@ -67,23 +67,27 @@ To explore the filesystem:
    ls -l /
    ```
    This shows all top-level directories and their permissions.
+   ![cpu](./screenshots/1.png)
 
 2. **Check Filesystem Type**:
    ```bash
    df -T /
    ```
    Displays the filesystem format (e.g., ext4, Btrfs) of the root partition.
+   ![filesys](![cpu](./screenshots/2.png))
 
 3. **Explore a Directory** (e.g., `/bin`):
    ```bash
    ls /bin
    ```
    Lists essential commands like `ls`, `cp`, and `cat`.
+   ![cpu](./screenshots/3.png)
 
 4. **View System Information**:
    ```bash
    cat /proc/cpuinfo
    ```
+   ![cpu](./screenshots/4.png)
    Shows CPU details from the virtual `/proc` filesystem.
 
 5. **Mount a USB Drive**:
