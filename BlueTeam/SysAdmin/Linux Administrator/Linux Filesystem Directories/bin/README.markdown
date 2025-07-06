@@ -1,6 +1,6 @@
 # /bin: Essential User Command Binaries
 
-The `/bin` directory is the home of essential command-line tools that keep a Linux system running, whether you're a regular user or troubleshooting in recovery mode. These are the core utilities—like `ls`, `cp`, and `cat`—that let you navigate, manage files, and interact with the system. Think of `/bin` as the toolbox every Linux user needs, always available even if other parts of the filesystem aren’t mounted.
+The `/bin` directory is the home of essential command-line tools that keep a Linux system running, whether you're a regular user or troubleshooting in recovery mode. These are the core utilities, like `ls`, `cp`, and `cat`, that let you navigate, manage files, and interact with the system. Think of `/bin` as the toolbox every Linux user needs, always available even if other parts of the filesystem aren’t mounted.
 
 ## Purpose
 
