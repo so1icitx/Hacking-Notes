@@ -60,7 +60,6 @@ ls /boot/vmlinuz*
   ```bash
   sudo fdisk -l  # Check for /boot partition
   ```
-![boot](./../screenshots/9.png)
 
 - **Monitor Space**: Kernel updates add files, so ensure `/boot` has enough space:
   ```bash
