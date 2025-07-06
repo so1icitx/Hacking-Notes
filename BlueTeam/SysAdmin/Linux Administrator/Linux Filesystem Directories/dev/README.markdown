@@ -32,7 +32,7 @@ ls /dev
 - Write to `/dev/null` (discards data):
   ```bash
   echo "useless data" > /dev/null
-```
+
 
 ![dev](./../screenshots/12.png)
   
