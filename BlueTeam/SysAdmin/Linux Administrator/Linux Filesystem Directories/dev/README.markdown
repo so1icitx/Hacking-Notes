@@ -32,7 +32,7 @@ ls /dev
 - Write to `/dev/null` (discards data):
   ```bash
   echo "useless data" > /dev/null
-```
+
 
 ![dev](./../screenshots/12.png)
   
@@ -74,4 +74,4 @@ lsblk
 - [Udev Documentation](https://www.freedesktop.org/wiki/Software/systemd/udev/)
 - [Arch Linux Wiki: Device Files](https://wiki.archlinux.org/title/Device_file)
 
-`/dev` is your gateway to hardware—explore cautiously! 🛠️
+

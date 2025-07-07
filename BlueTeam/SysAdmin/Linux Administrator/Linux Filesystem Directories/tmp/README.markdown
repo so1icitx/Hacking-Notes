@@ -1,6 +1,6 @@
 # /tmp: Temporary Files
 
-The `/tmp` directory is a shared space for temporary files created by applications or users, designed to be short-lived and cleared at reboot. Think of it as a whiteboard where programs jot down notes—like autosaves or caches—that don’t need to stick around. It’s writable by all users but protected by a sticky bit to prevent unauthorized deletions.
+The `/tmp` directory is a shared space for temporary files created by applications or users, designed to be short-lived and cleared at reboot. Think of it as a whiteboard where programs jot down notes, like autosaves or caches, that don’t need to stick around. It’s writable by all users but protected by a sticky bit to prevent unauthorized deletions.
 
 ## Purpose
 
