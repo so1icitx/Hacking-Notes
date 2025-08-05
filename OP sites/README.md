@@ -103,6 +103,13 @@ This README compiles a list of useful websites and resources for penetration tes
 - **[CRT.sh](https://crt.sh/)**  
   A certificate transparency log search tool, useful for discovering subdomains and certificates issued for a domain.
 
+
+https://mailheader.org/
+https://ipinfo.io/
+https://urlscan.io/
+https://www.wannabrowser.net/
+https://www.url2png.com/
+
 ---
 
 ## Usage Tips
