@@ -110,6 +110,7 @@ https://urlscan.io/
 https://www.wannabrowser.net/
 https://www.url2png.com/
 https://app.any.run/
+https://dmarcian.com/spf-survey/
 
 ---
 
