@@ -14,15 +14,6 @@ Logs answer critical questions:
 
 **Analogy**: Logs are like a security camera, capturing every move in your system for review.
 
-## Getting Started
-- **Prerequisites**: Basic CLI skills (`ls`, `cat`, `grep`), Linux system (e.g., Ubuntu VM), text editor (e.g., `nano`).
-- **Setup**:
-  ```bash
-  git clone <repository_url>
-  cd Logs101
-  ```
-- **Tools**: Terminal, `rsyslog`, `lnav`, or SIEM (e.g., Elastic Stack).
-
 ## What Are Logs?
 Logs record system events with:
 - **Timestamp**: When it happened (e.g., `2025-08-25T12:34:56Z`).
