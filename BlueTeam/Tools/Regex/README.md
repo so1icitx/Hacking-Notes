@@ -11,15 +11,6 @@ Regex lets you search logs beyond exact strings, matching patterns like:
 
 **Analogy**: Regex is like a customizable filter, sifting through logs to find exactly what you need.
 
-## Getting Started
-- **Prerequisites**: Basic CLI skills (`cat`, `grep`, `nano`), Unix system (e.g., Ubuntu VM), or access to [Regex101](https://regex101.com/) or [CyberChef](https://gchq.github.io/CyberChef/).
-- **Setup**:
-  ```bash
-  git clone <repository_url>
-  cd Logs101
-  ```
-- **Tools**: Terminal with `egrep`, text editor (`nano`), or online regex testers.
-
 ## Regex Basics
 Regex matches patterns in text using special characters and constructs.
 
