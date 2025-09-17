@@ -1,7 +1,7 @@
 # HTTP Security Headers: In-Depth Guide
 
 ## Overview
-HTTP security headers are response headers sent by a web server to instruct browsers on how to handle content securely, mitigating common web vulnerabilities like cross-site scripting (XSS), clickjacking, and man-in-the-middle (MITM) attacks. They act as a browser-enforced rulebook, controlling script execution, connection protocols, and resource access without altering application logic. However, not every missing header is a critical vulnerability—context matters. 
+HTTP security headers are response headers sent by a web server to instruct browsers on how to handle content securely, mitigating common web vulnerabilities like cross-site scripting (XSS), clickjacking, and man-in-the-middle (MITM) attacks. They act as a browser-enforced rulebook, controlling script execution, connection protocols, and resource access without altering application logic. However, not every missing header is a critical vulnerability, context matters. 
 
 ![HTTP Headers Flow](screenshots/1.png)  
 
