@@ -64,7 +64,7 @@ Many tutorials flag missing headers as vulnerabilities, but Google’s bug bount
   - Combine with CSP’s `frame-ancestors 'none'` for modern browsers.
   - Assess clickjacking impact (e.g., does the site have critical actions?).
 
-![Clickjacking Prevention] (screenshots/4.jpeg)  
+![Clickjacking Prevention](screenshots/4.jpeg)  
 
 ### 4. Cross-Origin Resource Sharing (CORS)
 - **Purpose**: Allows controlled cross-origin requests, relaxing the Same-Origin Policy (SOP) for APIs.
