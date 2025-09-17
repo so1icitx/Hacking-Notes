@@ -106,6 +106,10 @@ Tools for gathering information about systems or networks.
 ## Contributions
 Suggest new tools or updates by forking this repo or contacting the maintainer. This list will grow with new discoveries.
 
+
+https://www.revouninstaller.com/revo-uninstaller-free-download/
+https://github.com/ChrisTitusTech/winutil
+
 ## Notes
 - Check sites regularly for updates, as tools evolve.
 - Use VPNs or proxies for privacy during recon, if permitted.
