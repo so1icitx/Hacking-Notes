@@ -1,4 +1,4 @@
-# SSH Tunneling:
+# SSH Tunneling: Secure Access to Remote Resources
 
 ## Overview
 SSH (Secure Shell) is a protocol for establishing encrypted connections between a local machine (e.g., your laptop) and a remote server, typically over port 22. Beyond basic remote access, SSH tunneling (or port forwarding) enables secure access to applications running on other ports or servers, bypassing network restrictions like firewalls or Network Address Translation (NAT). 
@@ -16,7 +16,7 @@ SSH tunneling creates a secure "tunnel" through an SSH connection (port 22) to f
 - **Security**: Encrypts traffic, unlike unencrypted protocols (e.g., clear RDP).
 - **Bypasses Restrictions**: Accesses blocked ports or internal servers without firewall changes.
 - **Flexibility**: Supports various protocols and network configurations.
-- **Context Matters**: While tunneling enhances security, it’s not a fix for underlying vulnerabilities (e.g., weak server authentication), as emphasized in Google’s Vulnerability Rewards Program for assessing impact.
+- **Context Matters**: Tunneling enhances security but doesn’t fix underlying vulnerabilities (e.g., weak server authentication). As Google’s Vulnerability Rewards Program emphasizes, assess findings for exploitable impact.
 
 ## Types of SSH Tunneling
 
@@ -28,12 +28,12 @@ SSH tunneling creates a secure "tunnel" through an SSH connection (port 22) to f
   - Traffic to this port is tunneled over SSH (port 22) to the remote server’s specified port (e.g., `localhost:80` on the server).
 - **Example**:
   ```bash
-  ssh -N -L 8888:localhost:80 marek@<server1-public-ip>
+  ssh -N -L 8888:localhost:80 user@<remote-server-ip>
   ```
   - `-N`: Don’t execute a remote command; only forward ports.
-  - `-L 8888:localhost:80`: Bind local port `8888` to `localhost:80` on the remote server (`server1`).
-  - Access `localhost:8888` in your browser to see the Nginx web server on `server1`.
-- **Scenario**: Your workplace blocks port 80, but `server1` (with public IP) has port 22 open. Tunnel HTTP traffic to access the web server securely.
+  - `-L 8888:localhost:80`: Bind local port `8888` to `localhost:80` on the remote server.
+  - Access `localhost:8888` in a browser to see the remote web server.
+- **Scenario**: Your workplace blocks port 80, but the remote server has port 22 open. Tunnel HTTP traffic to access the web server securely.
 
 ![Local Port Forwarding](pics/22.png)  
 
@@ -41,13 +41,13 @@ SSH tunneling creates a secure "tunnel" through an SSH connection (port 22) to f
 - **Purpose**: Allows a remote server to access a port on your local machine or internal network, initiated from the internal machine (behind NAT).
 - **Use Case**: Enable a third-party server to access an internal web server (port 80) on a private network without public IPs or firewall changes.
 - **Mechanics**:
-  - The internal machine (e.g., `server1`) initiates an SSH tunnel to a remote server with a public IP.
-  - The remote server binds a port (e.g., `8888`), which tunnels traffic back to a specified port (e.g., `localhost:80` on `server1` or another internal server).
+  - The internal machine (e.g., `ssh-server`) initiates an SSH tunnel to a remote server with a public IP.
+  - The remote server binds a port (e.g., `8888`), which tunnels traffic back to a specified port (e.g., `localhost:80` on `ssh-server` or another internal server).
 - **Example**:
   ```bash
   ssh -N -R 8888:localhost:80 ubuntu@<remote-server-public-ip>
   ```
-  - `-R 8888:localhost:80`: Remote server binds port `8888`, forwarding traffic to `localhost:80` on `server1`.
+  - `-R 8888:localhost:80`: Remote server binds port `8888`, forwarding traffic to `localhost:80` on `ssh-server`.
   - On the remote server, `curl localhost:8888` accesses the Nginx web server on `ssh-server`.
 - **Extended Example** (accessing a private server):
   ```bash
@@ -55,8 +55,9 @@ SSH tunneling creates a secure "tunnel" through an SSH connection (port 22) to f
   ```
   - Forwards `remote-server:8888` to `10.0.1.216:80` (a private server, `server1`) via `ssh-server`.
   - Requires `server1` to allow HTTP traffic from `ssh-server` (not via SSH).
-- **Scenario**: Your internal server (`server1`) is behind NAT with no public IP. Use `ssh-server` (also behind NAT) to initiate a tunnel to a public remote server, allowing access to `server1`’s web server.
+- **Scenario**: Your internal server (`server1`) is behind NAT with no public IP. Use `ssh-server` to initiate a tunnel to a public remote server, allowing access to `server1`’s web server.
 
+![Reverse Port Forwarding](pics/23.png)  
 
 ### 3. Dynamic Port Forwarding (SOCKS Proxy)
 - **Purpose**: Creates a SOCKS proxy server on a local port, allowing flexible tunneling of arbitrary traffic to any destination via the SSH server, without specifying fixed ports.
@@ -70,10 +71,11 @@ SSH tunneling creates a secure "tunnel" through an SSH connection (port 22) to f
   ```
   - `-D 8888`: Binds `localhost:8888` as a SOCKS proxy.
   - Configure an application (e.g., Firefox) to use `socks5://localhost:8888`.
-  - Example: `curl --proxy socks5://localhost:8888 ifconfig.me` returns the remote server’s public IP, as traffic is routed through it.
+  - Example: `curl --proxy socks5://localhost:8888 ifconfig.me` returns the remote server’s public IP.
 - **Scenario**: Access the internet or internal servers from your laptop via a remote server, hiding your IP or bypassing NAT restrictions.
 
-![Dynamic Port Forwarding](pics/23.png)  
+
+*Diagram showing SOCKS proxy traffic from laptop to remote server and beyond.*
 
 ## Key Differences
 | **Type**            | **Direction**                          | **Initiator**         | **Use Case**                                                                 | **Scalability**                     |
@@ -86,25 +88,115 @@ SSH tunneling creates a secure "tunnel" through an SSH connection (port 22) to f
 - **Reverse**: An internal server initiates to allow a remote server to access its services (e.g., `ssh-server` or `server1` behind NAT).
 - **Dynamic**: You initiate a SOCKS proxy to route any traffic through a remote server, ideal for flexible or unknown destinations.
 
-## Local PortForwarding Example:
-**here i have two alpine servers that we will use for local port forwarding**
-![Dynamic Port Forwarding](pics/alpinebob.png) 
-![Dynamic Port Forwarding](pics/alpinekevin.png)
-**first i made a ssh-key pair that i then added to the other machines via scp**
-![Dynamic Port Forwarding](pics/3.png)
-![Dynamic Port Forwarding](pics/4.png)
-**changed the ssh config file to allow only publickey auth**
-![Dynamic Port Forwarding](pics/1.png)
-![Dynamic Port Forwarding](pics/2.png)
-**then i added nginx to kevin's machine, but for some reason the nginx server was responding with a 404 status code**
-![Dynamic Port Forwarding](pics/5.png)
-![Dynamic Port Forwarding](pics/6.png)  
-**after some investigatin i found the problem**
-![Dynamic Port Forwarding](pics/7.png)
-![Dynamic Port Forwarding](pics/8.png)
-![Dynamic Port Forwarding](pics/9.png)
-**when i tried the local port forwarding on bob's machine we ran into another error**
-![Dynamic Port Forwarding](pics/10.png)
-![Dynamic Port Forwarding](pics/11.png)
-![Dynamic Port Forwarding](pics/12.png)  
+## Local Port Forwarding Example: Alpine Servers
+This example demonstrates setting up local port forwarding between two Alpine Linux servers, `bob` (local machine) and `kevin` (remote server with Nginx), to access a web server on `kevin` via an SSH tunnel.
+
+![Alpine Server Setup](pics/alpinebob.png)  
+
+![Alpine Server Setup](pics/alpinekevin.png)  
+
+
+
+### Setup Steps
+1. **Generate SSH Key Pair on `bob`**:
+   - On `bob`, run:
+     ```bash
+     ssh-keygen
+     ```
+     - Creates `~/.ssh/id_rsa` (private) and `~/.ssh/id_rsa.pub` (public).
+     - Press Enter to accept defaults (no passphrase for simplicity).
+   - Result: Key pair generated.
+     ![SSH Key Generation](pics/3.png)  
+  
+
+2. **Copy Public Key to `kevin`**:
+   - Copy `id_rsa.pub` from `bob` to `kevin`’s `~/.ssh/authorized_keys`:
+     ```bash
+     scp ~/.ssh/id_rsa.pub user@<kevin-ip>:~/.ssh/authorized_keys
+     ```
+     - Ensure `kevin` has `~/.ssh` with `chmod 700 ~/.ssh` and `authorized_keys` with `chmod 600 ~/.ssh/authorized_keys`.
+   - Result: Key copied successfully.
+     ![SCP Key Transfer](pics/4.png)  
+     
+
+3. **Configure SSH on `kevin` for Public Key Authentication**:
+   - Edit `/etc/ssh/sshd_config` on `kevin`:
+     ```bash
+     sudo vi /etc/ssh/sshd_config
+     ```
+     - Set `PubkeyAuthentication yes` and `PasswordAuthentication no` to enforce key-based authentication.
+     - Restart SSH service:
+       ```bash
+       sudo rc-service sshd restart
+       ```
+   - Result: SSH configured for secure key-based access.
+     ![SSH Config](pics/1.png)  
+    
+     ![SSH Config Confirmation](pics/2.png)  
+     
+
+4. **Install and Configure Nginx on `kevin`**:
+   - Install Nginx:
+     ```bash
+     sudo apk add nginx
+     sudo rc-service nginx start
+     sudo rc-update add nginx default
+     ```
+   - Test locally: `curl localhost:80` should return Nginx’s default page.
+   - **Troubleshooting 404 Error**:
+     - If `curl localhost:80` returns a 404, check Nginx configuration:
+       ```bash
+       sudo vi /etc/nginx/http.d/default.conf
+       ```
+       - Ensure the `root` directive points to a valid directory (e.g., `/usr/share/nginx/html`).
+       - Verify the directory exists and has an `index.html` file:
+         ```bash
+         ls -l /usr/share/nginx/html
+         ```
+       - Restart Nginx:
+         ```bash
+         sudo rc-service nginx restart
+         ```
+     - Result: Nginx serves the default page.
+       ![Nginx 404 Issue](pics/5.png)  
+       
+       ![Nginx Config Check](pics/6.png)  
+     
+       ![Nginx Fix](pics/7.png)  
+       
+       ![Nginx Working](pics/8.png)  
+     
+       ![Nginx Directory](pics/9.png)  
+       
+
+5. **Create Local Port Forwarding Tunnel from `bob`**:
+   - On `bob`, run:
+     ```bash
+     ssh -N -L 8888:localhost:80 user@<kevin-ip>
+     ```
+     - Binds `localhost:8888` on `bob` to `localhost:80` on `kevin`.
+     - Open `localhost:8888` in a browser on `bob` to see Nginx’s page.
+   - **Troubleshooting SSH Error**:
+     - If the tunnel fails (e.g., connection refused), check:
+       - SSH service is running on `kevin`: `sudo rc-service sshd status`.
+       - Port 22 is open: `nc -zv <kevin-ip> 22`.
+       - Firewall allows port 22: `sudo apk add iptables; sudo iptables -L`.
+       - Correct user and IP in the SSH command.
+     - Result: Tunnel established successfully.
+       ![SSH Tunnel Error](pics/10.png)  
+      
+       ![Firewall Check](pics/11.png)  
+      
+       ![Tunnel Success](pics/12.png)  
+       
+
+6. **Test the Tunnel**:
+   - On `bob`, run:
+     ```bash
+     curl localhost:8888
+     ```
+     - Should return Nginx’s default page from `kevin`.
+   - Or open `localhost:8888` in a browser.
+   - Result: Nginx page accessed via the tunnel.
+
 
