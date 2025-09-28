@@ -122,12 +122,12 @@ This example demonstrates setting up local port forwarding between two Alpine Li
 3. **Configure SSH on `kevin` for Public Key Authentication**:
    - Edit `/etc/ssh/sshd_config` on `kevin`:
      ```bash
-     sudo vi /etc/ssh/sshd_config
+     vi /etc/ssh/sshd_config
      ```
      - Set `PubkeyAuthentication yes` and `PasswordAuthentication no` to enforce key-based authentication.
      - Restart SSH service:
        ```bash
-       sudo rc-service sshd restart
+       rc-service sshd restart
        ```
    - Result: SSH configured for secure key-based access.
      ![SSH Config](pics/1.png)  
@@ -138,20 +138,20 @@ This example demonstrates setting up local port forwarding between two Alpine Li
 4. **Install and Configure Nginx on `kevin`**:
    - Install Nginx:
      ```bash
-     sudo apk add nginx
-     sudo rc-service nginx start
-     sudo rc-update add nginx default
+     apk add nginx
+     rc-service nginx start
+     rc-update add nginx
      ```
    - Test locally: `curl localhost:80` should return Nginx’s default page.
    - **Troubleshooting 404 Error**:
      - If `curl localhost:80` returns a 404, check Nginx configuration:
        ```bash
-       sudo vi /etc/nginx/http.d/default.conf
+       vi /etc/nginx/http.d/default.conf
        ```
-       - Ensure the `root` directive points to a valid directory (e.g., `/usr/share/nginx/html`).
+       - Ensure the `root` directive points to a valid directory (e.g., `/var/lib/nginx/html`).
        - Verify the directory exists and has an `index.html` file:
          ```bash
-         ls -l /usr/share/nginx/html
+         ls -l /var/lib/nginx/html
          ```
        - Restart Nginx:
          ```bash
@@ -172,15 +172,13 @@ This example demonstrates setting up local port forwarding between two Alpine Li
 5. **Create Local Port Forwarding Tunnel from `bob`**:
    - On `bob`, run:
      ```bash
-     ssh -N -L 8888:localhost:80 user@<kevin-ip>
+     ssh -f -N -L 8888:localhost:80 user@<kevin-ip>
      ```
      - Binds `localhost:8888` on `bob` to `localhost:80` on `kevin`.
-     - Open `localhost:8888` in a browser on `bob` to see Nginx’s page.
+     - Curl `localhost:8888` on `bob` to see Nginx’s page.
    - **Troubleshooting SSH Error**:
      - If the tunnel fails (e.g., connection refused), check:
        - SSH service is running on `kevin`: `sudo rc-service sshd status`.
-       - Port 22 is open: `nc -zv <kevin-ip> 22`.
-       - Firewall allows port 22: `sudo apk add iptables; sudo iptables -L`.
        - Correct user and IP in the SSH command.
      - Result: Tunnel established successfully.
        ![SSH Tunnel Error](pics/10.png)  
@@ -189,14 +187,4 @@ This example demonstrates setting up local port forwarding between two Alpine Li
       
        ![Tunnel Success](pics/12.png)  
        
-
-6. **Test the Tunnel**:
-   - On `bob`, run:
-     ```bash
-     curl localhost:8888
-     ```
-     - Should return Nginx’s default page from `kevin`.
-   - Or open `localhost:8888` in a browser.
-   - Result: Nginx page accessed via the tunnel.
-
 
