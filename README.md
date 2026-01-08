@@ -8,5 +8,4 @@ this is just a place where ill post things ive learnt, throughout my cybersecuri
 * letsdefend.io
 * cyberdefenders.org
 * tryhackme.com
-* comptia security+
 
